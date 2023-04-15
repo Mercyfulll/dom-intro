@@ -18,11 +18,17 @@ const smsTotalOne = document.querySelector(".smsTotalOne");
 const totalOne = document.querySelector(".totalOne");
 
 var callsTotal = 0;
+callTotalOne.innerHTML = callsTotal.toFixed(2);
 var smsTotal = 0;
+smsTotalOne.innerHTML = smsTotal.toFixed(2);
+var totalCost = 0;
+totalOne.innerHTML = totalCost.toFixed(2);
+
 
 function textBillTotal() {
-    
-    var billTypeEntered = billTypeText.value.trim();
+    var bill = billTypeText.value.trim()
+    var billTypeEntered = bill.toLowerCase() ;
+
         if (billTypeEntered === "call") {
             callsTotal += 2.75
         }

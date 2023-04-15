@@ -17,7 +17,12 @@ const smsTotalTwo = document.querySelector(".smsTotalTwo");
 const totalTwo = document.querySelector(".totalTwo");
 
 var totalForCalls = 0;
-var smsTotal = 0;
+callTotalTwo.innerHTML = totalForCalls.toFixed(2)
+var totalForSms = 0;
+smsTotalTwo.innerHTML = smsTotal.toFixed(2);
+var totalCosts = 0;
+totalTwo.innerHTML = totalCosts.toFixed(2);
+
 
 function textBillTotal() {
 
@@ -29,20 +34,20 @@ function textBillTotal() {
             totalForCalls += 2.75
         }
         else if (billItemType === "sms") {
-            smsTotal += 0.75;
+            totalForSms += 0.75;
         }
     }
 
 
     callTotalTwo.innerHTML = totalForCalls.toFixed(2)
-    smsTotalTwo.innerHTML = smsTotal.toFixed(2);
-    var totalCost = totalForCalls + smsTotal;
-    totalTwo.innerHTML = totalCost.toFixed(2);
+    smsTotalTwo.innerHTML = totalForSms.toFixed(2);
+    var totalCosts = totalForCalls + totalForSms;
+    totalTwo.innerHTML = totalCosts.toFixed(2);
 
-    if (totalCost >= 50) {
+    if (totalCosts >= 50) {
         totalTwo.classList.add("danger");
     }
-    else if (totalCost >= 30) {
+    else if (totalCosts >= 30) {
         totalTwo.classList.add("warning");
     }
 

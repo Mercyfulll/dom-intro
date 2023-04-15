@@ -21,7 +21,7 @@ function totalPhoneBill(){
     var billStrings = billString.value.split(",");
     var total = 0
     for (var i = 0; i < billStrings.length; i++) {
-        var billItem = billStrings[i].trim();
+        var billItem = billStrings[i].trim().toLowerCase();
         
         if (billItem.toLowerCase() === "call") {
             total += 2.75;
