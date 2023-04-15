@@ -17,29 +17,30 @@ const billTotal = document.querySelector(".billTotal");
 const calculateBtn = document.querySelector(".calculateBtn");
 
 
+
 function totalPhoneBill(){
     var billStrings = billString.value.split(",");
     var total = 0
     for (var i = 0; i < billStrings.length; i++) {
         var billItem = billStrings[i].trim().toLowerCase();
         
-        if (billItem.toLowerCase() === "call") {
+        if (billItem === "call") {
             total += 2.75;
         }
-        else if (billItem.toLowerCase() === "sms") {
+        else if (billItem === "sms") {
             total += 0.75;
         }
-    }
-        var roundedBillTotal = total.toFixed(2); 
+    }   var roundedBillTotal = total.toFixed(2);
         billTotal.innerHTML = roundedBillTotal;
-         
-
         if (roundedBillTotal > 20 & roundedBillTotal < 30){
             billTotal.classList.add("warning")
         } else if (roundedBillTotal > 30){
             billTotal.classList.add("danger")
+        } else {
+            billTotal.classList.remove("danger")
+            billTotal.classList.remove("warning")
         }
-        console.log(billTotal.innerHTML);
+        
 }
 
 
