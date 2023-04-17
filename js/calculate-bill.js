@@ -41,10 +41,8 @@ function totalPhoneBill(){
         } else{
             billTotal.classList.remove("danger")
             billTotal.classList.remove("warning")
-        }
-        
+        }       
 }
-
 
 calculateBtn.addEventListener('click',totalPhoneBill);
 
