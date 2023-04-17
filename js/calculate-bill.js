@@ -17,6 +17,8 @@ const billTotal = document.querySelector(".billTotal");
 const calculateBtn = document.querySelector(".calculateBtn");
 
 
+billTotal.classList.remove("danger")
+billTotal.classList.remove("warning")
 
 function totalPhoneBill(){
     var billStrings = billString.value.split(",");
@@ -32,18 +34,16 @@ function totalPhoneBill(){
         }
     }   var roundedBillTotal = total.toFixed(2);
         billTotal.innerHTML = roundedBillTotal;
-        if (roundedBillTotal > 20 & roundedBillTotal < 30){
+        if (roundedBillTotal < 20){
+            billTotal.classList.remove("danger")
+            billTotal.classList.remove("warning")
+        }else if (roundedBillTotal > 20 & roundedBillTotal < 30){
             billTotal.classList.remove("danger")
             billTotal.classList.add("warning")
         } else if (roundedBillTotal > 30){
             billTotal.classList.remove("warning")
             billTotal.classList.add("danger")
-        } else{
-            billTotal.classList.remove("danger")
-            billTotal.classList.remove("warning")
-        }       
+        }
 }
 
 calculateBtn.addEventListener('click',totalPhoneBill);
-
-
