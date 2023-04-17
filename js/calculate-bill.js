@@ -33,10 +33,12 @@ function totalPhoneBill(){
     }   var roundedBillTotal = total.toFixed(2);
         billTotal.innerHTML = roundedBillTotal;
         if (roundedBillTotal > 20 & roundedBillTotal < 30){
+            billTotal.classList.remove("danger")
             billTotal.classList.add("warning")
         } else if (roundedBillTotal > 30){
+            billTotal.classList.remove("warning")
             billTotal.classList.add("danger")
-        } else {
+        } else{
             billTotal.classList.remove("danger")
             billTotal.classList.remove("warning")
         }
