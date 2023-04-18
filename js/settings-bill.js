@@ -21,6 +21,7 @@
 // * display the latest total on the screen.
 // * check the value thresholds and display the total value in the right color.
 
+const checkRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
 const callCostText = document.querySelector(".callCostSetting");
 const smsCostText = document.querySelector(".smsCostSetting");
 const warningText = document.querySelector(".warningLevelSetting");
@@ -38,38 +39,48 @@ smsTotalThree.innerHTML = smsTotal.toFixed(2);
 var totalOfCost = 0;
 totalThree.innerHTML = totalOfCost.toFixed(2);
 
+
+var smsInput = 0;
+var callInput = 0;
+var warningInput = 0;
+var criticalInput = 0;
+
+updateSettingsBtn.addEventListener('click', function(){
+    smsInput = parseFloat(smsCostText.value);
+    callInput = parseFloat(callCostText.value);
+    warningInput = parseFloat(warningText.value);
+    criticalInput = parseFloat(criticalText.value);
+
+})
+
 function settingsBillTotal(){
-    var inputCall = callCostText.value;
-    var inputSms = smsCostText.value;
+    
     var checkRadioBtn = document.querySelector("input[name='billItemTypeWithSettings']:checked");
+
     if (checkRadioBtn) {
         var billItemTypeWithSettings = checkRadioBtn.value
-        // billItemType will be 'call' or 'sms'
         if (billItemTypeWithSettings === "call") {
-            totalOfCalls += inputCall.toFixed(2);
+            totalOfCalls += callInput;
         }
         else if (billItemTypeWithSettings === "sms") {
-            totalOfSms += inputSms.toFixed(2);
+            totalOfSms += smsInput;
         }
-    }   console.log(callTotalThree.innerHTML);
-        console.log(smsCostText);
-
+    }
+    
     callTotalThree.innerHTML = totalOfCalls.toFixed(2)
-    smsTotalThree.innerHTML = totalOfSms.toFixed(2);
+    smsTotalThree.innerHTML = totalOfSms.toFixed(2)
     var totalOfCost = totalOfCalls + totalOfSms;
-    totalThree.innerHTML = totalOfCost.toFixed(2);
-
-    if (totalOfCost >= criticalText.value) {
+    totalThree.innerHTML = totalOfCost.toFixed(2)
+    
+    if (totalOfCost >= criticalInput) {
         totalThree.classList.add("danger");
-    }
-    else if (totalOfCost >= warningText.value) {
+        buttonAdd.disabled = true;
+    }else if (totalOfCost >= warningInput) {
         totalThree.classList.add("warning");
+        
+
     }
-alert ("clicked")
-} 
+     
+}
 
-
-updateSettingsBtn.addEventListener('click', settingsBillTotal)
-buttonAdd.addEventListener("click", function(){
-    alert ("clicked")
-}) 
+buttonAdd.addEventListener("click", settingsBillTotal)
