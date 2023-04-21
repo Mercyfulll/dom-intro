@@ -46,11 +46,16 @@ var warningInput = 0;
 var criticalInput = 0;
 
 updateSettingsBtn.addEventListener('click', function(){
+   
     smsInput = parseFloat(smsCostText.value);
     callInput = parseFloat(callCostText.value);
     warningInput = parseFloat(warningText.value);
     criticalInput = parseFloat(criticalText.value);
 
+    totalThree.classList.remove("danger")
+    totalThree.classList.remove("warning")
+    buttonAdd.disabled = false;
+    
 })
 
 function settingsBillTotal(){
